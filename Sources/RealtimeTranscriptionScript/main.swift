@@ -2,7 +2,6 @@ import Foundation
 import AVFoundation
 import Starscream
 import CoreMedia
-import SwiftDotEnv
 
 class RealtimeTranscription: NSObject, WebSocketDelegate, AVCaptureAudioDataOutputSampleBufferDelegate {
     private var socket: WebSocket?
@@ -12,17 +11,12 @@ class RealtimeTranscription: NSObject, WebSocketDelegate, AVCaptureAudioDataOutp
     private var captureSession: AVCaptureSession?
     private var audioOutput: AVCaptureAudioDataOutput?
     
-    init() {
-        DotEnv.load()
-        self.apiKey = ProcessInfo.processInfo.environment["ASSEMBLYAI_API_KEY"] ?? ""
+    init(apiKey: String) {
+        self.apiKey = apiKey
         super.init()
     }
     
     func start() {
-        guard !apiKey.isEmpty else {
-            print("API key not found. Make sure you have set ASSEMBLYAI_API_KEY in your .env file.")
-            return
-        }
         setupWebSocket()
         setupAudioCapture()
         startAudioCapture()
@@ -137,5 +131,6 @@ class RealtimeTranscription: NSObject, WebSocketDelegate, AVCaptureAudioDataOutp
 }
 
 // Run the script
-let transcription = RealtimeTranscription()
+let apiKey = "d7f47c18b76e4a17a2411cc11d27f2d6"
+let transcription = RealtimeTranscription(apiKey: apiKey)
 transcription.start()

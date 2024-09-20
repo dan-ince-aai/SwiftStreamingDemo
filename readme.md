@@ -12,10 +12,7 @@ This Swift script uses AssemblyAI's realtime speech-to-text API to perform real-
 
 1. Clone the repository
 2. Run `swift package resolve` to fetch dependencies
-3. Create a `.env` file in the project root with your AssemblyAI API key:
-   ```
-   ASSEMBLYAI_API_KEY=your_api_key_here
-   ```
+3. Replace "your_assemblyai_api_key_here" in main.swift (Line 134) with your actual AssemblyAI API key
 
 ## Running the Script
 
