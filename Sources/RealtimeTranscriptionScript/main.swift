@@ -131,6 +131,6 @@ class RealtimeTranscription: NSObject, WebSocketDelegate, AVCaptureAudioDataOutp
 }
 
 // Run the script
-let apiKey = "d7f47c18b76e4a17a2411cc11d27f2d6"
+let apiKey = "<insert-assemblyai-api-key>"
 let transcription = RealtimeTranscription(apiKey: apiKey)
 transcription.start()
